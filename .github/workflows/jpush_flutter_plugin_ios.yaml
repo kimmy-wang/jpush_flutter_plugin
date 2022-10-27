@@ -19,3 +19,24 @@ jobs:
       flutter_channel: stable
       flutter_version: 3.3.2
       working_directory: jpush_flutter_plugin_ios
+
+  ios:
+    runs-on: macos-latest
+
+    defaults:
+      run:
+        working-directory: jpush_flutter_plugin_ios/example
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: subosito/flutter-action@v2
+
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
+      - name: Start Simulator
+        run: open -a Simulator.app
+
+      - name: Integration Tests
+        run: flutter test integration_test -d iPhone
