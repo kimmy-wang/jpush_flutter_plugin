@@ -1,0 +1,27 @@
+name: jpush_flutter_plugin_ios
+description: iOS implementation of the jpush_flutter_plugin plugin
+repository: https://github.com/kimmy214/jpush_flutter_plugin/tree/main/jpush_flutter_plugin_ios
+version: 0.0.1+1
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+  flutter: ">=3.3.2"
+
+flutter:
+  plugin:
+    implements: jpush_flutter_plugin
+    platforms:
+      ios:
+        pluginClass: JpushFlutterPluginPlugin
+        dartPluginClass: JpushFlutterPluginIOS
+
+dependencies:
+  flutter:
+    sdk: flutter
+  jpush_flutter_plugin_platform_interface: ^0.0.1+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.0
+  very_good_analysis: ^3.1.0

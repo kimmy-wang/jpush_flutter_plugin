@@ -1,0 +1,30 @@
+name: jpush_flutter_plugin
+description: Jpush SDK
+repository: https://github.com/kimmy214/jpush_flutter_plugin/tree/main/jpush_flutter_plugin
+version: 0.0.1+1
+
+environment:
+  sdk: ">=2.18.0 <3.0.0"
+  flutter: ">=3.3.2"
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: jpush_flutter_plugin_android
+      ios:
+        default_package: jpush_flutter_plugin_ios
+
+dependencies:
+  flutter:
+    sdk: flutter
+  jpush_flutter_plugin_android: ^0.0.1+2
+  jpush_flutter_plugin_ios: ^0.0.1+1
+  jpush_flutter_plugin_platform_interface: ^0.0.1+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.3.0
+  plugin_platform_interface: ^2.0.0
+  very_good_analysis: ^3.1.0
