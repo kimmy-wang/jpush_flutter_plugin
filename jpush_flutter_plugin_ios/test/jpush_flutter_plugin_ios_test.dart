@@ -37,7 +37,10 @@ void main() {
 
     test('can be registered', () {
       JpushFlutterPluginIOS.registerWith();
-      expect(JpushFlutterPluginPlatform.instance, isA<JpushFlutterPluginIOS>());
+      expect(
+        JpushFlutterPluginPlatform.instance,
+        isA<JpushFlutterPluginIOS>(),
+      );
     });
 
     test('getPlatformName returns correct name', () async {

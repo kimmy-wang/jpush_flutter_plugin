@@ -16,7 +16,8 @@ class JpushFlutterPluginAndroid extends JpushFlutterPluginPlatform {
   final methodChannel =
       const MethodChannel('plugins.kimmy.me/jpush_flutter_plugin_android');
 
-  /// Registers this class as the default instance of [JpushFlutterPluginPlatform]
+  /// Registers this class as the default instance of
+  /// [JpushFlutterPluginPlatform]
   static void registerWith() {
     JpushFlutterPluginPlatform.instance = JpushFlutterPluginAndroid();
   }

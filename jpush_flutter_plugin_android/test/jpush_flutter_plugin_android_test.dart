@@ -37,8 +37,10 @@ void main() {
 
     test('can be registered', () {
       JpushFlutterPluginAndroid.registerWith();
-      expect(JpushFlutterPluginPlatform.instance,
-          isA<JpushFlutterPluginAndroid>());
+      expect(
+        JpushFlutterPluginPlatform.instance,
+        isA<JpushFlutterPluginAndroid>(),
+      );
     });
 
     test('getPlatformName returns correct name', () async {
