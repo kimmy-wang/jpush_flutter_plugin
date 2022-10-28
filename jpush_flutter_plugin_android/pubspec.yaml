@@ -19,7 +19,7 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  jpush_flutter_plugin_platform_interface: ^0.0.1+1
+  jpush_flutter_plugin_platform_interface: ^0.0.1-alpha.0
 
 dev_dependencies:
   flutter_test:

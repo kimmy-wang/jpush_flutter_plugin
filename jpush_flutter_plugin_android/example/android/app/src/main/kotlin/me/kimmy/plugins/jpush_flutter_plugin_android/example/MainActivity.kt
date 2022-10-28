@@ -1,4 +1,4 @@
-package me.kimmy.plugins.jpush.flutter.plugin.example
+package me.kimmy.plugins.jpush_flutter_plugin_android.example
 
 import io.flutter.embedding.android.FlutterActivity
 

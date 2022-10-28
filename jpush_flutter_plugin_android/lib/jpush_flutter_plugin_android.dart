@@ -26,4 +26,15 @@ class JpushFlutterPluginAndroid extends JpushFlutterPluginPlatform {
   Future<String?> getPlatformName() {
     return methodChannel.invokeMethod<String>('getPlatformName');
   }
+
+  @override
+  Future<void> setDebugMode({bool debugMode = false}) {
+    return methodChannel
+        .invokeMethod<void>('setDebugMode', {'debugMode': debugMode});
+  }
+
+  @override
+  Future<void> init() {
+    return methodChannel.invokeMethod<void>('init');
+  }
 }

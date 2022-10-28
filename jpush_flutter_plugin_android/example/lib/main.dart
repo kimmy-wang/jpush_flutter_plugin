@@ -10,7 +10,14 @@ import 'package:jpush_flutter_plugin_android/jpush_flutter_plugin_android.dart';
 import 'package:jpush_flutter_plugin_platform_interface/jpush_flutter_plugin_platform_interface.dart';
 
 Future<void> main() async {
-  JpushFlutterPluginAndroid.registerWith();
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    // await JpushFlutterPluginPlatform.instance.setDebugMode(debugMode: true);
+    await JpushFlutterPluginPlatform.instance.init();
+  } catch(e, stack) {
+    print(e);
+    print(stack);
+  }
   runApp(const MyApp());
 }
 
