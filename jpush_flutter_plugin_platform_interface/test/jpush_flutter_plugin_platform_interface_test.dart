@@ -13,6 +13,16 @@ class JpushFlutterPluginMock extends JpushFlutterPluginPlatform {
 
   @override
   Future<String?> getPlatformName() async => mockPlatformName;
+
+  @override
+  Future<void> init() {
+    return Future.value();
+  }
+
+  @override
+  Future<void> setDebugMode({bool debugMode = false}) {
+    return Future.value();
+  }
 }
 
 void main() {
