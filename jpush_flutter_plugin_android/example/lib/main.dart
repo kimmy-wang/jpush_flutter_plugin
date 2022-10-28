@@ -11,13 +11,8 @@ import 'package:jpush_flutter_plugin_platform_interface/jpush_flutter_plugin_pla
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try {
-    // await JpushFlutterPluginPlatform.instance.setDebugMode(debugMode: true);
-    await JpushFlutterPluginPlatform.instance.init();
-  } catch(e, stack) {
-    print(e);
-    print(stack);
-  }
+  await JpushFlutterPluginPlatform.instance.setDebugMode(debugMode: true);
+  await JpushFlutterPluginPlatform.instance.init();
   runApp(const MyApp());
 }
 

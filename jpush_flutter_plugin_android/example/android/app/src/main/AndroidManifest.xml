@@ -1,40 +1,50 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  package="me.kimmy.plugins.jpush_flutter_plugin_android.example">
-   <application
-        android:label="example"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="me.kimmy.plugins.jpush_flutter_plugin_android.example">
+
+    <!-- JPush自定义权限，用于发送接收广播权限校验（必选）-->
+    <permission
+        android:name="me.kimmy.plugins.jpush_flutter_plugin_android.example.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="me.kimmy.plugins.jpush_flutter_plugin_android.example.permission.JPUSH_MESSAGE" />
+
+    <application
         android:icon="@mipmap/ic_launcher"
+        android:label="example"
         tools:replace="android:label">
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:exported="true"
+            android:hardwareAccelerated="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
-            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-            android:hardwareAccelerated="true"
             android:windowSoftInputMode="adjustResize">
             <!-- Specifies an Android theme to apply to this Activity as soon as
                  the Android process has started. This theme is visible to the user
                  while the Flutter UI initializes. After that, this theme continues
                  to determine the Window background behind the Flutter UI. -->
             <meta-data
-              android:name="io.flutter.embedding.android.NormalTheme"
-              android:resource="@style/NormalTheme"
-              />
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-       <!-- Required. For publish channel feature -->
-       <!-- JPUSH_CHANNEL 是为了方便开发者统计 APK 分发渠道。-->
-       <!-- 例如: -->
-       <!-- 发到 Google Play 的 APK 可以设置为 google-play; -->
-       <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
-       <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
-       <!-- Required. AppKey copied from Portal -->
-       <meta-data android:name="JPUSH_APPKEY" android:value=""/>
+        <!-- Required. For publish channel feature -->
+        <!-- JPUSH_CHANNEL 是为了方便开发者统计 APK 分发渠道。-->
+        <!-- 例如: -->
+        <!-- 发到 Google Play 的 APK 可以设置为 google-play; -->
+        <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
+        <!-- Required. AppKey copied from Portal -->
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="" />
         <!-- Don't delete the meta-data below.
              This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
         <meta-data

@@ -136,6 +136,9 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
     }
 
     public static class Delegate implements IDelegate, PluginRegistry.ActivityResultListener {
+        public static final String SET_DEBUG_MODE_FAILED = "SET_DEBUG_MODE_FAILED";
+        public static final String INIT_FAILED = "INIT_FAILED";
+
         private final Context context;
 
         @SuppressWarnings("deprecation")
@@ -176,7 +179,9 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
         public void setDebugMode(boolean debugMode, MethodChannel.Result result) {
             try {
                 JPushInterface.setDebugMode(debugMode);
+                result.success(null);
             } catch (Exception e) {
+                result.error(SET_DEBUG_MODE_FAILED, e.getMessage(), e.getStackTrace());
             }
         }
 
@@ -185,8 +190,9 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
             if (this.context == null) return;
             try {
                 JPushInterface.init(this.context);
+                result.success(null);
             } catch (Exception e) {
-
+                result.error(INIT_FAILED, e.getMessage(), e.getStackTrace());
             }
         }
     }
