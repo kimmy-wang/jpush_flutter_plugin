@@ -7,7 +7,7 @@
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:jpush_flutter_plugin_platform_interface/src/method_channel_jpush_flutter_plugin.dart';
+import 'package:jpush_flutter_plugin_platform_interface/src/method_channel/method_channel_jpush_flutter_plugin.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();

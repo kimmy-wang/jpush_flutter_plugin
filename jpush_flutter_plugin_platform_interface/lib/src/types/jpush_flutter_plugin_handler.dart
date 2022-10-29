@@ -5,5 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
-export 'package:jpush_flutter_plugin_platform_interface/src/platform_interface/jpush_flutter_plugin_platform.dart';
-export 'package:jpush_flutter_plugin_platform_interface/src/types/types.dart';
+import 'package:flutter/services.dart';
+
+/// Handler for a message launch event.
+typedef JpushFlutterPluginHandler = void Function(MethodCall call);
