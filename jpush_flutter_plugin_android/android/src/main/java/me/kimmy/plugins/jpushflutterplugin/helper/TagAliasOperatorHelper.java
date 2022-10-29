@@ -1,4 +1,4 @@
-package me.kimmy.plugins.jpushflutterplugin;
+package me.kimmy.plugins.jpushflutterplugin.helper;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,11 +9,12 @@ import cn.jpush.android.api.JPushMessage;
  * 处理tagalias相关的逻辑
  */
 public class TagAliasOperatorHelper {
-    private static final String TAG = "JIGUANG-TagAliasHelper";
+    private static final String TAG = "TagAliasOperatorHelper";
 
     private Context context;
 
-    private TagAliasOperatorHelper() {}
+    private TagAliasOperatorHelper() {
+    }
 
     public static TagAliasOperatorHelper getInstance() {
         return TagAliasOperatorHelperHelper.instance;

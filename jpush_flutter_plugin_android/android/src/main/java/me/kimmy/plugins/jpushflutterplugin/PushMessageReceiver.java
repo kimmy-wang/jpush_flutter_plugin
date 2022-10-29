@@ -10,26 +10,29 @@ import cn.jpush.android.api.JPushInterface;
 import cn.jpush.android.api.JPushMessage;
 import cn.jpush.android.api.NotificationMessage;
 import cn.jpush.android.service.JPushMessageReceiver;
+import me.kimmy.plugins.jpushflutterplugin.helper.MessageOperatorHelper;
+import me.kimmy.plugins.jpushflutterplugin.helper.TagAliasOperatorHelper;
 
 public class PushMessageReceiver extends JPushMessageReceiver {
     private static final String TAG = "PushMessageReceiver";
 
     @Override
     public void onMessage(Context context, CustomMessage customMessage) {
-        Log.e(TAG, "[onMessage] " + customMessage);
-        Intent intent = new Intent("com.jiguang.demo.message");
-        intent.putExtra("msg", customMessage.message);
-        context.sendBroadcast(intent);
+        try {
+            Log.e(TAG, "[onMessage] " + customMessage);
+            MessageOperatorHelper.getInstance().sendCustomMessage(customMessage);
+        } catch (Throwable throwable) {
+            Log.e(TAG, "[onMessage] " + throwable.getMessage(), throwable);
+        }
     }
 
     @Override
     public void onNotifyMessageOpened(Context context, NotificationMessage message) {
-        Log.e(TAG, "[onNotifyMessageOpened] " + message);
         try {
-            // TODO: 打开自定义的Activity
-
+            Log.i(TAG, "[onNotifyMessageOpened] " + message);
+            MessageOperatorHelper.getInstance().sendNotificationMessage(message);
         } catch (Throwable throwable) {
-
+            Log.e(TAG, "[onNotifyMessageOpened] " + throwable.getMessage(), throwable);
         }
     }
 

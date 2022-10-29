@@ -17,6 +17,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.PluginRegistry;
+import me.kimmy.plugins.jpushflutterplugin.helper.MessageOperatorHelper;
 
 public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
     private static final String CHANNEL_NAME = "plugins.kimmy.me/jpush_flutter_plugin_android";
@@ -40,6 +41,7 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
     @VisibleForTesting
     public void initInstance(BinaryMessenger messenger, Context context) {
         channel = new MethodChannel(messenger, CHANNEL_NAME);
+        MessageOperatorHelper.getInstance().setChannel(channel);
         delegate = new Delegate(context);
         channel.setMethodCallHandler(this);
     }
@@ -96,6 +98,7 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
         delegate = null;
         channel.setMethodCallHandler(null);
         channel = null;
+        MessageOperatorHelper.getInstance().setChannel(null);
     }
 
     @Override
