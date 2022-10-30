@@ -6,11 +6,15 @@
 // https://opensource.org/licenses/MIT.
 
 import 'package:flutter/material.dart';
-import 'package:jpush_flutter_plugin_ios/jpush_flutter_plugin_ios.dart';
+import 'package:flutter/services.dart';
 import 'package:jpush_flutter_plugin_platform_interface/jpush_flutter_plugin_platform_interface.dart';
 
 Future<void> main() async {
-  JpushFlutterPluginIOS.registerWith();
+  WidgetsFlutterBinding.ensureInitialized();
+  await JpushFlutterPluginPlatform.instance.setDebugMode(debugMode: true);
+  await JpushFlutterPluginPlatform.instance.init((MethodCall call) async {
+    print('[method]: ${call.method}');
+  });
   runApp(const MyApp());
 }
 

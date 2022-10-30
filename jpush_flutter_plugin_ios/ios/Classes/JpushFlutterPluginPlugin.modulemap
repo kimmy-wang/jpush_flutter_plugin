@@ -1,0 +1,7 @@
+framework module jpush_flutter_plugin_ios {
+  umbrella header "jpush_flutter_plugin_ios-umbrella.h"
+
+  export *
+  module * { export * }
+
+}

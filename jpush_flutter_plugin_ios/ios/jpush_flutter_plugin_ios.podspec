@@ -12,10 +12,13 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => '../LICENSE' }
   s.author           = { 'Kimmy' => 'hi@kimmy.me' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'Classes/**/*.{h,m}'
   s.public_header_files = 'Classes/**/*.h'
+  s.module_map = 'Classes/JpushFlutterPluginPlugin.modulemap'
   s.dependency 'Flutter'
-
+  s.dependency 'JCore'
+  s.dependency 'JPush'
+  s.static_framework = true
   s.platform = :ios, '12.0'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 end
