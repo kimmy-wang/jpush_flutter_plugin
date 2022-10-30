@@ -40,5 +40,4 @@ class JpushFlutterPluginIOS extends JpushFlutterPluginPlatform {
     });
     return methodChannel.invokeMethod<void>('init');
   }
-
 }
