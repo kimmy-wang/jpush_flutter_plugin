@@ -59,7 +59,7 @@
 
 - (void)setAuth: (Boolean)auth result:(FlutterResult)result {
     [JGInforCollectionAuth JCollectionAuth:^(JGInforCollectionAuthItems * _Nonnull authInfo) {
-        authInfo.isAuth = YES;
+        authInfo.isAuth = auth;
     }];
 }
 
