@@ -50,5 +50,9 @@ abstract class JpushFlutterPluginPlatform extends PlatformInterface {
   /// 初始化推送服务 API
   /// 调用了本 API 后，JPush 推送服务进行初始化。
   /// 建议在自定义的 Application 中的 onCreate 中调用。
-  Future<void> init(JpushFlutterPluginHandler handler);
+  Future<void> init(
+    String appKey,
+    String channel,
+    JpushFlutterPluginHandler handler,
+  );
 }

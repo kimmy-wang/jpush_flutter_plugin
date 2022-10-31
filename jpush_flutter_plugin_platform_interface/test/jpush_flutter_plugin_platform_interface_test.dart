@@ -16,7 +16,11 @@ class JpushFlutterPluginMock extends JpushFlutterPluginPlatform {
   Future<String?> getPlatformName() async => mockPlatformName;
 
   @override
-  Future<void> init(JpushFlutterPluginHandler handler) {
+  Future<void> init(
+    String appKey,
+    String channel,
+    JpushFlutterPluginHandler handler,
+  ) {
     return Future.value();
   }
 
