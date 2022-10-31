@@ -35,9 +35,11 @@
     if ([@"getPlatformName" isEqualToString:call.method]) {
         result(@"iOS");
     } else if ([@"setDebugMode" isEqualToString:call.method]) {
-        [self setDebugMode:call.arguments[@"debugMode"] result:result];
+        [self setDebugMode:[call.arguments[@"debugMode"] boolValue] result:result];
     } else if ([@"init" isEqualToString:call.method]) {
-        [self initJPush:result];
+        NSString *appKey = call.arguments[@"appKey"];
+        NSString *channel = call.arguments[@"channel"];
+        [self initJPush: appKey channel:channel result:result];
     } else {
         result(FlutterMethodNotImplemented);
     }
@@ -52,7 +54,7 @@
     result(nil);
 }
 
-- (void)initJPush:(FlutterResult)result {
+- (void)initJPush:(NSString *) appKey channel:(NSString *) channel result:(FlutterResult)result {
     // Optional
     // 获取 IDFA
     // 如需使用 IDFA 功能请添加此代码并在初始化方法的 advertisingIdentifier 参数中填写对应值
@@ -75,8 +77,8 @@
     // Required
     // init Push
     // notice: 2.1.5 版本的 SDK 新增的注册方法，改成可上报 IDFA，如果没有使用 IDFA 直接传 nil
-    [JPUSHService setupWithOption:self.launchOptions appKey:@"31fdd58ec5301819f2fd954c"
-                          channel:@"app-store"
+    [JPUSHService setupWithOption:self.launchOptions appKey:appKey
+                          channel:channel
                  apsForProduction:FALSE
             advertisingIdentifier:advertisingId];
 

@@ -34,10 +34,17 @@ class JpushFlutterPluginIOS extends JpushFlutterPluginPlatform {
   }
 
   @override
-  Future<void> init(JpushFlutterPluginHandler handler) {
+  Future<void> init(
+    String appKey,
+    String channel,
+    JpushFlutterPluginHandler handler,
+  ) {
     methodChannel.setMethodCallHandler((MethodCall call) async {
       handler(call);
     });
-    return methodChannel.invokeMethod<void>('init');
+    return methodChannel.invokeMethod<void>('init', {
+      'appKey': appKey,
+      'channel': channel,
+    });
   }
 }
