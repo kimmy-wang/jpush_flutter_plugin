@@ -16,16 +16,21 @@ class JpushFlutterPluginMock extends JpushFlutterPluginPlatform {
   Future<String?> getPlatformName() async => mockPlatformName;
 
   @override
+  Future<void> setDebugMode({bool debugMode = false}) {
+    return Future.value();
+  }
+
+  @override
+  Future<void> setAuth({bool auth = false}) {
+    return Future.value();
+  }
+
+  @override
   Future<void> init(
     String appKey,
     String channel,
     JpushFlutterPluginHandler handler,
   ) {
-    return Future.value();
-  }
-
-  @override
-  Future<void> setDebugMode({bool debugMode = false}) {
     return Future.value();
   }
 }

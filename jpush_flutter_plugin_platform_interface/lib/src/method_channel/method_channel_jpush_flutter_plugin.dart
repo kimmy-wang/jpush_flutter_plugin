@@ -23,7 +23,16 @@ class MethodChannelJpushFlutterPlugin extends JpushFlutterPluginPlatform {
 
   @override
   Future<void> setDebugMode({bool debugMode = false}) {
-    return methodChannel.invokeMethod<void>('setDebugMode', debugMode);
+    return methodChannel.invokeMethod<void>('setDebugMode', {
+      'debugMode': debugMode,
+    });
+  }
+
+  @override
+  Future<void> setAuth({bool auth = false}) {
+    return methodChannel.invokeMethod<void>('setAuth', {
+      'auth': auth,
+    });
   }
 
   @override
