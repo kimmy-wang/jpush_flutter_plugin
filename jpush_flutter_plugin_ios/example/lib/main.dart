@@ -13,7 +13,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await JpushFlutterPluginPlatform.instance.setDebugMode(debugMode: true);
   await JpushFlutterPluginPlatform.instance
-      .init('', 'app-store', (MethodCall call) async {
+      .init('31fdd58ec5301819f2fd954c', 'app-store', (MethodCall call) async {
     print('[method]: ${call.method}');
   });
   runApp(const MyApp());
