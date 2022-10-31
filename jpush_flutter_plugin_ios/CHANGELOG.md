@@ -1,3 +1,7 @@
+# 0.0.1-alpha.3
+
+* fix: `setAuth`.
+
 # 0.0.1-alpha.2
 
 * fix: `setAuth`.

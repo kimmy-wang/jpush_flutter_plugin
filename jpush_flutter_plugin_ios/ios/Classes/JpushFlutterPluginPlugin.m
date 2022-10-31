@@ -61,6 +61,7 @@
     [JGInforCollectionAuth JCollectionAuth:^(JGInforCollectionAuthItems * _Nonnull authInfo) {
         authInfo.isAuth = auth;
     }];
+    result(nil);
 }
 
 - (void)initJPush:(NSString *) appKey channel:(NSString *) channel result:(FlutterResult)result {
