@@ -1,4 +1,5 @@
 #import "JpushFlutterPluginPlugin.h"
+#import <JCore/JGInforCollectionAuth.h>
 // 引入 JPush 功能所需头文件
 #import <JPush/JPUSHService.h>
 
@@ -36,6 +37,8 @@
         result(@"iOS");
     } else if ([@"setDebugMode" isEqualToString:call.method]) {
         [self setDebugMode:[call.arguments[@"debugMode"] boolValue] result:result];
+    } else if ([@"setAuth" isEqualToString:call.method]) {
+        [self setAuth:[call.arguments[@"auth"] boolValue] result:result];
     } else if ([@"init" isEqualToString:call.method]) {
         NSString *appKey = call.arguments[@"appKey"];
         NSString *channel = call.arguments[@"channel"];
@@ -52,6 +55,12 @@
         [JPUSHService setLogOFF];
     }
     result(nil);
+}
+
+- (void)setAuth: (Boolean)auth result:(FlutterResult)result {
+    [JGInforCollectionAuth JCollectionAuth:^(JGInforCollectionAuthItems * _Nonnull authInfo) {
+        authInfo.isAuth = YES;
+    }];
 }
 
 - (void)initJPush:(NSString *) appKey channel:(NSString *) channel result:(FlutterResult)result {

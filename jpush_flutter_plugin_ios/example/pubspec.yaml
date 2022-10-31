@@ -17,7 +17,7 @@ dependencies:
     # The example app is bundled with the plugin so we use a path dependency on
     # the parent directory to use the current plugin's version.
     path: ../
-  jpush_flutter_plugin_platform_interface: 0.0.1-alpha.2
+  jpush_flutter_plugin_platform_interface: 0.0.1-alpha.3
 
 dev_dependencies:
   flutter_driver:

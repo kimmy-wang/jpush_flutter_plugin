@@ -34,6 +34,13 @@ class JpushFlutterPluginIOS extends JpushFlutterPluginPlatform {
   }
 
   @override
+  Future<void> setAuth({bool auth = false}) {
+    return methodChannel.invokeMethod<void>('setAuth', {
+      'auth': auth,
+    });
+  }
+
+  @override
   Future<void> init(
     String appKey,
     String channel,
