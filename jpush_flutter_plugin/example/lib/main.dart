@@ -8,7 +8,14 @@
 import 'package:flutter/material.dart';
 import 'package:jpush_flutter_plugin/jpush_flutter_plugin.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await setDebugMode(debugMode: true);
+  await init('3d3593296cc489e91041f7b8', 'app-store', (call) {
+    print('[method]: ${call.method}');
+  });
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
