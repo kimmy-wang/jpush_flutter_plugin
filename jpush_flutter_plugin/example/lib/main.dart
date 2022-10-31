@@ -11,6 +11,7 @@ import 'package:jpush_flutter_plugin/jpush_flutter_plugin.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setDebugMode(debugMode: true);
+  await setAuth(auth: true);
   await init('3d3593296cc489e91041f7b8', 'app-store', (call) {
     print('[method]: ${call.method}');
   });

@@ -25,6 +25,22 @@ Future<void> setDebugMode({bool debugMode = false}) async {
   return _platform.setDebugMode(debugMode: debugMode);
 }
 
+/// 隐私确认接口
+///
+/// 确保 App 首次启动时，在用户阅读您的《隐私政策》并取得用户授权之后，
+/// 才调用初始化函数 JPushInterface.init()，此时 SDK 才会真正采集设备信息，并上报。
+/// 如果没有在用户阅读您的《隐私政策》时取得用户授权，或者用户不同意您的《隐私政策》，
+/// 则初始化方法 JPushInterface.init() 失效。
+///
+/// 一旦 App 未获取到《隐私政策》的用户授权，后续的 App 冷启动，
+/// 开发者应该保证在调用初始化 SDK 方法 JPushInterface.init()之前，
+/// 调用 JCollectionAuth.setAuth(context, false)方法，告知极光未获得用户授权。
+///
+/// @param auth 为 true 则代表同意隐私协议，false 则代表不同意隐私协议
+Future<void> setAuth({bool auth = false}) async {
+  return _platform.setAuth(auth: auth);
+}
+
 /// 初始化推送服务 API
 /// 调用了本 API 后，JPush 推送服务进行初始化。
 /// 建议在自定义的 Application 中的 onCreate 中调用。
