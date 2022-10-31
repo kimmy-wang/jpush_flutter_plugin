@@ -12,7 +12,8 @@ import 'package:jpush_flutter_plugin_platform_interface/jpush_flutter_plugin_pla
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await JpushFlutterPluginPlatform.instance.setDebugMode(debugMode: true);
-  await JpushFlutterPluginPlatform.instance.init((MethodCall call) async {
+  await JpushFlutterPluginPlatform.instance.init('', '',
+      (MethodCall call) async {
     print('[method]: ${call.method}');
   });
   runApp(const MyApp());
