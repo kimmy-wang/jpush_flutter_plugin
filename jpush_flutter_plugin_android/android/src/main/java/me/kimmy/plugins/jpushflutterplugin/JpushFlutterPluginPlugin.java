@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 
+import cn.jiguang.api.utils.JCollectionAuth;
 import cn.jpush.android.api.JPushInterface;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
@@ -23,6 +24,7 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
     private static final String CHANNEL_NAME = "plugins.kimmy.me/jpush_flutter_plugin_android";
     private static final String METHOD_GET_PLATFORM_NAME = "getPlatformName";
     private static final String METHOD_SET_DEBUG_MODE = "setDebugMode";
+    private static final String METHOD_SET_AUTH = "setAuth";
     private static final String METHOD_INIT = "init";
 
 
@@ -111,6 +113,10 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
                 boolean debugMode = call.argument("debugMode");
                 delegate.setDebugMode(debugMode, result);
                 break;
+            case METHOD_SET_AUTH:
+                boolean auth = call.argument("auth");
+                delegate.setAuth(auth, result);
+                break;
             case METHOD_INIT:
                 delegate.init(result);
                 break;
@@ -132,6 +138,13 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
         public void setDebugMode(boolean debugMode, MethodChannel.Result result);
 
         /**
+         * 隐私确认接口
+         * @param auth
+         * @param result
+         */
+        public void setAuth(boolean auth, MethodChannel.Result result);
+
+        /**
          * 调用了本 API 后，JPush 推送服务进行初始化.
          */
         public void init(MethodChannel.Result result);
@@ -140,6 +153,7 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
 
     public static class Delegate implements IDelegate, PluginRegistry.ActivityResultListener {
         public static final String SET_DEBUG_MODE_FAILED = "SET_DEBUG_MODE_FAILED";
+        public static final String SET_AUTH_FAILED = "SET_AUTH_FAILED";
         public static final String INIT_FAILED = "INIT_FAILED";
 
         private final Context context;
@@ -185,6 +199,17 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
                 result.success(null);
             } catch (Exception e) {
                 result.error(SET_DEBUG_MODE_FAILED, e.getMessage(), e.getStackTrace());
+            }
+        }
+
+        @Override
+        public void setAuth(boolean auth, MethodChannel.Result result) {
+            if (this.context == null) return;
+            try {
+                JCollectionAuth.setAuth(this.context, auth);
+                result.success(null);
+            } catch (Exception e) {
+                result.error(SET_AUTH_FAILED, e.getMessage(), e.getStackTrace());
             }
         }
 

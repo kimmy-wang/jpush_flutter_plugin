@@ -1,7 +1,7 @@
 name: jpush_flutter_plugin_android
 description: Android implementation of the `jpush_flutter_plugin` that implements `jpush`'s message push service.
 repository: https://github.com/kimmy214/jpush_flutter_plugin/tree/main/jpush_flutter_plugin_android
-version: 0.0.1-alpha.1
+version: 0.0.1-alpha.2
 
 environment:
   sdk: ">=2.18.0 <3.0.0"
@@ -19,7 +19,7 @@ flutter:
 dependencies:
   flutter:
     sdk: flutter
-  jpush_flutter_plugin_platform_interface: ^0.0.1-alpha.2
+  jpush_flutter_plugin_platform_interface: ^0.0.1-alpha.3
 
 dev_dependencies:
   flutter_test:
