@@ -26,7 +26,7 @@
         <!-- since 3.0.9 Required SDK 核心功能-->
         <provider
             android:name="cn.jpush.android.service.DataProvider"
-            android:authorities="me.kimmy.plugins.jpushflutterplugin.DataProvider"
+            android:authorities="${applicationId}.DataProvider"
             android:exported="true" />
 
         <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的 JPush 服务相互拉起的功能。 -->
@@ -37,14 +37,14 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService" />
-                <category android:name="me.kimmy.plugins.jpushflutterplugin" />
+                <category android:name="${applicationId}" />
             </intent-filter>
         </service>
 
         <!-- since 3.1.0 Required SDK 核心功能-->
         <provider
             android:name="cn.jpush.android.service.DownloadProvider"
-            android:authorities="me.kimmy.plugins.jpushflutterplugin.DownloadProvider"
+            android:authorities="${applicationId}.DownloadProvider"
             android:exported="true" />
 
         <!-- Required SDK 核心功能-->
@@ -54,7 +54,7 @@
             android:exported="false">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
-                <category android:name="me.kimmy.plugins.jpushflutterplugin" />
+                <category android:name="${applicationId}" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -78,7 +78,7 @@
                 <action android:name="cn.jpush.android.ui.PushActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="me.kimmy.plugins.jpushflutterplugin" />
+                <category android:name="${applicationId}" />
             </intent-filter>
         </activity>
         <!-- SDK 核心功能-->
@@ -90,7 +90,7 @@
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
                 <action android:name="cn.jpush.android.ui.PopWinActivity" />
-                <category android:name="me.kimmy.plugins.jpushflutterplugin" />
+                <category android:name="${applicationId}" />
             </intent-filter>
         </activity>
 
@@ -120,7 +120,7 @@
             android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-                <category android:name="me.kimmy.plugins.jpushflutterplugin" />
+                <category android:name="${applicationId}" />
             </intent-filter>
         </receiver>
 
@@ -133,7 +133,7 @@
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.JNotifyActivity" />
                 <category android:name="android.intent.category.DEFAULT" /><!--Required SDK核心功能 since 4.2.2-->
-                <category android:name="me.kimmy.plugins.jpushflutterplugin" />
+                <category android:name="${applicationId}" />
             </intent-filter>
         </activity>
         <!-- since 4.6.0 Required SDK核心功能 -->
@@ -146,7 +146,7 @@
                 <action android:name="cn.android.service.JTransitActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="me.kimmy.plugins.jpushflutterplugin" />
+                <category android:name="${applicationId}" />
             </intent-filter>
         </activity>
     </application>
