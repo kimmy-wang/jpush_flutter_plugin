@@ -17,6 +17,7 @@
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setDebugMode(debugMode: true);
+  await setAuth(auth: true);
   await init('your appkey', 'tour channel', (call) {
     print('[method]: ${call.method}');
   });
@@ -34,13 +35,19 @@ dependencies:
   jpush_flutter_plugin: latest
 ```
 
+`android/app/src/main/AndroidManifest.xml`
+
 ```xml
-<manifest>
+<manifest
+        xmlns:tools="http://schemas.android.com/tools"
+>
     <permission
             android:name="yourpackage.permission.JPUSH_MESSAGE"
             android:protectionLevel="signature" />
     <uses-permission android:name="yourpackage.permission.JPUSH_MESSAGE" />
-    <application>
+    <application 
+            tools:replace="android:label"
+    >
         <activity>
             <!-- ... -->
         </activity>
@@ -60,7 +67,37 @@ dependencies:
 </manifest>
 ```
 
+`android/app/build.gradle`
+
+```groovy
+android {
+    // ...
+
+    defaultConfig {
+        // ...
+
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            // 还可以添加 'mips', 'mips64'
+        }
+    }
+
+    // ...
+
+    packagingOptions {
+        pickFirst 'lib/x86/libjcore336.so'
+        pickFirst 'lib/x86_64/libjcore336.so'
+        pickFirst 'lib/arm64-v8a/libjcore336.so'
+        pickFirst 'lib/armeabi/libjcore336.so'
+        pickFirst 'lib/armeabi-v7a/libjcore336.so'
+    }
+}
+```
+
 ### iOS
+
+`ios/Runner/Info.plist`
 
 ```xml
 <dict>

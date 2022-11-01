@@ -47,6 +47,12 @@ android {
         targetSdkVersion 32
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+
+        ndk {
+            //选择要添加的对应 cpu 类型的 .so 库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            // 还可以添加 'mips', 'mips64'
+        }
     }
 
     buildTypes {
@@ -55,6 +61,14 @@ android {
             // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig signingConfigs.debug
         }
+    }
+
+    packagingOptions {
+        pickFirst 'lib/x86/libjcore336.so'
+        pickFirst 'lib/x86_64/libjcore336.so'
+        pickFirst 'lib/arm64-v8a/libjcore336.so'
+        pickFirst 'lib/armeabi/libjcore336.so'
+        pickFirst 'lib/armeabi-v7a/libjcore336.so'
     }
 }
 
