@@ -1,3 +1,7 @@
+# 0.0.1-alpha.4
+
+* fix: ios端删除监测通知授权状态返回结果.
+
 # 0.0.1-alpha.3
 
 * fix: android sdk.
