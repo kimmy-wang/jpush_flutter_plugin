@@ -1,7 +1,7 @@
 name: jpush_flutter_plugin_ios
 description: iOS implementation of the `jpush_flutter_plugin` that implements `jpush`'s message push service.
 repository: https://github.com/kimmy214/jpush_flutter_plugin/tree/main/jpush_flutter_plugin_ios
-version: 0.0.1-alpha.3
+version: 0.0.1-alpha.4
 
 environment:
   sdk: ">=2.18.0 <3.0.0"

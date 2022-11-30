@@ -239,43 +239,43 @@
     completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以设置
 }
 
-- (void)jpushNotificationAuthorization:(JPAuthorizationStatus)status withInfo:(NSDictionary *)info {
-    NSLog(@"receive notification authorization status:%lu, info:%@", status, info);
-    [self alertNotificationAuthorization:status];
-}
+//- (void)jpushNotificationAuthorization:(JPAuthorizationStatus)status withInfo:(NSDictionary *)info {
+//    NSLog(@"receive notification authorization status:%lu, info:%@", status, info);
+//    [self alertNotificationAuthorization:status];
+//}
 
 #endif
 
-#pragma mark - 通知权限引导
-
-// 检测通知权限授权情况
-- (void)checkNotificationAuthorization {
-    [JPUSHService requestNotificationAuthorization:^(JPAuthorizationStatus status) {
-        // run in main thread, you can custom ui
-        NSLog(@"notification authorization status:%lu", status);
-        [self alertNotificationAuthorization:status];
-    }];
-}
-
-// 通知未授权时提示，是否进入系统设置允许通知，仅供参考
-- (void)alertNotificationAuthorization:(JPAuthorizationStatus)status {
-    if (status < JPAuthorizationStatusAuthorized) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"允许通知" message:@"是否进入设置允许通知？" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-        [alertView show];
-    }
-}
-
-#pragma mark - UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 1) {
-        if (@available(iOS 8.0, *)) {
-            [JPUSHService openSettingsForNotification:^(BOOL success) {
-                NSLog(@"open settings %@", success ? @"success" : @"failed");
-            }];
-        }
-    }
-}
+//#pragma mark - 通知权限引导
+//
+//// 检测通知权限授权情况
+//- (void)checkNotificationAuthorization {
+//    [JPUSHService requestNotificationAuthorization:^(JPAuthorizationStatus status) {
+//        // run in main thread, you can custom ui
+//        NSLog(@"notification authorization status:%lu", status);
+//        [self alertNotificationAuthorization:status];
+//    }];
+//}
+//
+//// 通知未授权时提示，是否进入系统设置允许通知，仅供参考
+//- (void)alertNotificationAuthorization:(JPAuthorizationStatus)status {
+//    if (status < JPAuthorizationStatusAuthorized) {
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"允许通知" message:@"是否进入设置允许通知？" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+//        [alertView show];
+//    }
+//}
+//
+//#pragma mark - UIAlertViewDelegate
+//
+//- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+//    if (buttonIndex == 1) {
+//        if (@available(iOS 8.0, *)) {
+//            [JPUSHService openSettingsForNotification:^(BOOL success) {
+//                NSLog(@"open settings %@", success ? @"success" : @"failed");
+//            }];
+//        }
+//    }
+//}
 
 
 @end
