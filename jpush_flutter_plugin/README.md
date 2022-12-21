@@ -45,6 +45,12 @@ dependencies:
             android:name="yourpackage.permission.JPUSH_MESSAGE"
             android:protectionLevel="signature" />
     <uses-permission android:name="yourpackage.permission.JPUSH_MESSAGE" />
+    <!-- 网络权限 （必选）-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 查看网络状态，sdk重连机制等需要使用-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 适配Android 13，应用弹出通知必须权限-->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application 
             tools:replace="android:label"
     >
