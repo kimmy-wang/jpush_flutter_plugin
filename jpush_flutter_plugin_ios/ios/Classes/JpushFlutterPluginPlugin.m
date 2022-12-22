@@ -43,6 +43,10 @@
         NSString *appKey = call.arguments[@"appKey"];
         NSString *channel = call.arguments[@"channel"];
         [self initJPush: appKey channel:channel result:result];
+    } else if ([@"setAlias" isEqualToString:call.method]) {
+        NSInteger sequence = call.arguments[@"sequence"];
+        NSString *alias = call.arguments[@"alias"];
+        [self setAliass: sequence alias:alias result:result];
     } else {
         result(FlutterMethodNotImplemented);
     }
@@ -103,6 +107,12 @@
     }];
     result(nil);
 
+}
+
+- (void)setAliass:(NSInteger) sequence alias:(NSString *) alias result:(FlutterResult)result {
+    [JPUSHService setAlias:alias completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        result(nil);
+    } seq:sequence];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
