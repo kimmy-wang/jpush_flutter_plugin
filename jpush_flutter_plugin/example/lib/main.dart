@@ -15,6 +15,9 @@ Future<void> main() async {
   await init('3d3593296cc489e91041f7b8', 'app-store', (call) {
     print('[method]: ${call.method}');
   });
+  Future.delayed(const Duration(seconds: 5), () async {
+    await setAlias(0, 'gqwyudagdasgcygewyufdgewyuqgdfqwgf');
+  });
   runApp(const MyApp());
 }
 

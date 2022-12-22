@@ -51,3 +51,22 @@ Future<void> init(
 ) async {
   return _platform.init(appKey, channel, handler);
 }
+
+/// 设置别名
+/// 调用此 API 来设置别名。
+/// 需要理解的是，这个接口是覆盖逻辑，而不是增量逻辑。即新的调用会覆盖之前的设置。
+/// 参数定义
+/// [sequence]
+///
+/// 用户自定义的操作序列号，同操作结果一起返回，用来标识一次操作的唯一性，推荐每次都用不同的数字序号。
+/// [alias]
+///
+/// 每次调用设置有效的别名，覆盖之前的设置。
+/// 有效的别名组成：字母（区分大小写）、数字、下划线、汉字、特殊字符 @!#$&*+=.|。
+/// 限制：[alias] 命名长度限制为 40 字节。（判断长度需采用 UTF-8 编码）
+Future<void> setAlias(
+  int sequence,
+  String alias,
+) async {
+  return _platform.setAlias(sequence, alias);
+}
