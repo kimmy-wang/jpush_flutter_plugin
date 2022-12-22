@@ -7,7 +7,6 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:jpush_flutter_plugin_platform_interface/jpush_flutter_plugin_platform_interface.dart';
-import 'package:jpush_flutter_plugin_platform_interface/src/types/types.dart';
 
 class JpushFlutterPluginMock extends JpushFlutterPluginPlatform {
   static const mockPlatformName = 'Mock';
@@ -31,6 +30,11 @@ class JpushFlutterPluginMock extends JpushFlutterPluginPlatform {
     String channel,
     JpushFlutterPluginHandler handler,
   ) {
+    return Future.value();
+  }
+
+  @override
+  Future<void> setAlias(int sequence, String alias) {
     return Future.value();
   }
 }

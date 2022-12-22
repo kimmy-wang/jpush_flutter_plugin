@@ -1,3 +1,7 @@
+# 0.0.1-alpha.4
+
+* add: `setAlias`.
+
 # 0.0.1-alpha.3
 
 * add: `setAuth`.

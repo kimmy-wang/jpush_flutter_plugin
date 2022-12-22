@@ -49,4 +49,15 @@ class MethodChannelJpushFlutterPlugin extends JpushFlutterPluginPlatform {
       'channel': channel,
     });
   }
+
+  @override
+  Future<void> setAlias(
+    int sequence,
+    String alias,
+  ) {
+    return methodChannel.invokeMethod<void>('setAlias', {
+      'sequence': sequence,
+      'alias': alias,
+    });
+  }
 }
