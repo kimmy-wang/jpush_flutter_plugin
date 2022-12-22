@@ -26,6 +26,7 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
     private static final String METHOD_SET_DEBUG_MODE = "setDebugMode";
     private static final String METHOD_SET_AUTH = "setAuth";
     private static final String METHOD_INIT = "init";
+    private static final String METHOD_SET_ALIAS = "setAlias";
 
 
     private MethodChannel channel;
@@ -120,6 +121,11 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
             case METHOD_INIT:
                 delegate.init(result);
                 break;
+            case METHOD_SET_ALIAS:
+                int sequence = call.argument("sequence");
+                String alias = call.argument("alias");
+                delegate.setAlias(sequence, alias, result);
+                break;
             default:
                 result.notImplemented();
         }
@@ -148,6 +154,12 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
          * 调用了本 API 后，JPush 推送服务进行初始化.
          */
         public void init(MethodChannel.Result result);
+
+        /**
+         * 调用此 API 来设置别名。
+         * 需要理解的是，这个接口是覆盖逻辑，而不是增量逻辑。即新的调用会覆盖之前的设置。
+         */
+        public void setAlias(int sequence, String alias, MethodChannel.Result result);
 
     }
 
@@ -218,6 +230,17 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
             if (this.context == null) return;
             try {
                 JPushInterface.init(this.context);
+                result.success(null);
+            } catch (Exception e) {
+                result.error(INIT_FAILED, e.getMessage(), e.getStackTrace());
+            }
+        }
+
+        @Override
+        public void setAlias(int sequence, String alias, MethodChannel.Result result) {
+            if (this.context == null) return;
+            try {
+                JPushInterface.setAlias(this.context, sequence, alias);
                 result.success(null);
             } catch (Exception e) {
                 result.error(INIT_FAILED, e.getMessage(), e.getStackTrace());

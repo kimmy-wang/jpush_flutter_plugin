@@ -17,6 +17,10 @@ Future<void> main() async {
       (MethodCall call) async {
     print('[method]: ${call.method}');
   });
+  Future.delayed(const Duration(seconds: 5), () async {
+    await JpushFlutterPluginPlatform.instance
+        .setAlias(0, 'gqwyudagdasgcygewyufdgewyuqgdfqwgd');
+  });
   runApp(const MyApp());
 }
 
