@@ -70,3 +70,12 @@ Future<void> setAlias(
 ) async {
   return _platform.setAlias(sequence, alias);
 }
+
+/// 调用此 API 来删除别名。
+///
+// [sequence] 用户自定义的操作序列号，同操作结果一起返回，用来标识一次操作的唯一性。
+Future<void> deleteAlias(
+  int sequence,
+) async {
+  return _platform.deleteAlias(sequence);
+}

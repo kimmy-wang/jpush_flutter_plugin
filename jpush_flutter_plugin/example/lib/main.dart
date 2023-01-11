@@ -18,6 +18,8 @@ Future<void> main() async {
   Future.delayed(const Duration(seconds: 5), () async {
     await setAlias(0, 'gqwyudagdasgcygewyufdgewyuqgdfqwgf');
   });
+
+  // await deleteAlias(0);
   runApp(const MyApp());
 }
 
