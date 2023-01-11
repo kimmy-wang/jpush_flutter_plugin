@@ -27,6 +27,7 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
     private static final String METHOD_SET_AUTH = "setAuth";
     private static final String METHOD_INIT = "init";
     private static final String METHOD_SET_ALIAS = "setAlias";
+    private static final String METHOD_DELETE_ALIAS = "deleteAlias";
 
 
     private MethodChannel channel;
@@ -126,6 +127,10 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
                 String alias = call.argument("alias");
                 delegate.setAlias(sequence, alias, result);
                 break;
+            case METHOD_DELETE_ALIAS:
+                int deleteSequence = call.argument("sequence");
+                delegate.deleteAlias(deleteSequence, result);
+                break;
             default:
                 result.notImplemented();
         }
@@ -160,6 +165,11 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
          * 需要理解的是，这个接口是覆盖逻辑，而不是增量逻辑。即新的调用会覆盖之前的设置。
          */
         public void setAlias(int sequence, String alias, MethodChannel.Result result);
+
+        /**
+         * 调用此 API 来删除别名。
+         */
+        public void deleteAlias(int sequence, MethodChannel.Result result);
 
     }
 
@@ -241,6 +251,17 @@ public class JpushFlutterPluginPlugin implements FlutterPlugin, MethodCallHandle
             if (this.context == null) return;
             try {
                 JPushInterface.setAlias(this.context, sequence, alias);
+                result.success(null);
+            } catch (Exception e) {
+                result.error(INIT_FAILED, e.getMessage(), e.getStackTrace());
+            }
+        }
+
+        @Override
+        public void deleteAlias(int sequence, MethodChannel.Result result) {
+            if (this.context == null) return;
+            try {
+                JPushInterface.deleteAlias(this.context, sequence);
                 result.success(null);
             } catch (Exception e) {
                 result.error(INIT_FAILED, e.getMessage(), e.getStackTrace());
