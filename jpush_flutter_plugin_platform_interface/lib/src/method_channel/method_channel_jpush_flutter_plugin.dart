@@ -60,4 +60,11 @@ class MethodChannelJpushFlutterPlugin extends JpushFlutterPluginPlatform {
       'alias': alias,
     });
   }
+
+  @override
+  Future<void> deleteAlias(int sequence) {
+    return methodChannel.invokeMethod<void>('deleteAlias', {
+      'sequence': sequence,
+    });
+  }
 }

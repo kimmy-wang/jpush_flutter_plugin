@@ -1,3 +1,7 @@
+# 0.0.1-alpha.5
+
+* add: `deleteAlias`.
+
 # 0.0.1-alpha.4
 
 * add: `setAlias`.

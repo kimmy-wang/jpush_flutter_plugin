@@ -37,6 +37,11 @@ class JpushFlutterPluginMock extends JpushFlutterPluginPlatform {
   Future<void> setAlias(int sequence, String alias) {
     return Future.value();
   }
+
+  @override
+  Future<void> deleteAlias(int sequence) {
+    return Future.value();
+  }
 }
 
 void main() {
