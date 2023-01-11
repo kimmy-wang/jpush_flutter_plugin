@@ -47,6 +47,9 @@
         NSInteger sequence = call.arguments[@"sequence"];
         NSString *alias = call.arguments[@"alias"];
         [self setAliass: sequence alias:alias result:result];
+    } else if ([@"deleteAlias" isEqualToString:call.method]) {
+        NSInteger sequence = call.arguments[@"sequence"];
+        [self deleteAliass: sequence result:result];
     } else {
         result(FlutterMethodNotImplemented);
     }
@@ -111,6 +114,12 @@
 
 - (void)setAliass:(NSInteger) sequence alias:(NSString *) alias result:(FlutterResult)result {
     [JPUSHService setAlias:alias completion:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
+        result(nil);
+    } seq:sequence];
+}
+
+- (void)deleteAliass:(NSInteger) sequence result:(FlutterResult)result {
+    [JPUSHService deleteAlias:^(NSInteger iResCode, NSString *iAlias, NSInteger seq) {
         result(nil);
     } seq:sequence];
 }
