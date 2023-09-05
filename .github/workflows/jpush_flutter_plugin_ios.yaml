@@ -28,7 +28,7 @@ jobs:
         working-directory: jpush_flutter_plugin_ios/example
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - uses: subosito/flutter-action@v2
 
